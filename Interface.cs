@@ -25,12 +25,12 @@ namespace Feudalism
 
         private void btnConnacht_Click(object sender, EventArgs e)
         {
-            changeLabel(0);
+            changeLabel(3);
         }
 
         private void btnMunster_Click(object sender, EventArgs e)
         {
-            changeLabel(1);
+            changeLabel(6);
         }
 
         private void changeLabel (int name)

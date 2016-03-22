@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Feudalism
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -28,13 +31,17 @@ namespace Feudalism
         static void initializeGame()
         {
 
-            string[] terNames = { "Connacht", "Munster" };
-
-            for (int i = 0; i < 2; i++)
+            using (StreamReader sr = new StreamReader(@"..\..\Territories.csv"))
             {
-                Variables.addTerritory(terNames[i], i);
-            }
+                while (sr.Peek() >= 0)
+                {
+                    var line = sr.ReadLine();
+                    var values = line.Split(',');
 
+                    Variables.addTerritory(values[0], int.Parse(values[1]));
+
+                }
+            }
 
         }
 
