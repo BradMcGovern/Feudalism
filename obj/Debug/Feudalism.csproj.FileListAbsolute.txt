@@ -1,0 +1,9 @@
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\bin\Debug\Feudalism.exe.config
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\bin\Debug\Feudalism.exe
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\bin\Debug\Feudalism.pdb
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.csprojResolveAssemblyReference.cache
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.Interface.resources
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.Properties.Resources.resources
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.csproj.GenerateResource.Cache
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.exe
+c:\users\bmcgovern\documents\visual studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.pdb
