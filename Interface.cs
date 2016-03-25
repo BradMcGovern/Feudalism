@@ -33,9 +33,9 @@ namespace Feudalism
             changeLabel(6);
         }
 
-        private void changeLabel (int name)
+        private void changeLabel (int ter)
         {
-            lblName.Text = Variables.getTerritory(name).getName();
+            lblName.Text = Variables.getLord(Variables.getTerritory(ter).getLordNumber()).getName();
 
         }
 

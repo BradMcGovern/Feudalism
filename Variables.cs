@@ -17,6 +17,14 @@ namespace Feudalism
             territoryList.Add(newTerritory);
         }
 
+        private static List<Lord> lordList = new List<Lord>();
+        public static Lord getLord(int lord) { return lordList[lord]; }
+        public static void addLord(string nam, int ter, int hon, int pio, int gre, int adv, int lav)
+        {
+            Lord newLord = new Lord(nam, ter, hon, pio, gre, adv, lav);
+            lordList.Add(newLord);
+        }
+
 
     }
 

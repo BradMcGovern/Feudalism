@@ -33,12 +33,26 @@ namespace Feudalism
 
             using (StreamReader sr = new StreamReader(@"..\..\Territories.csv"))
             {
+                var header = sr.ReadLine();
                 while (sr.Peek() >= 0)
                 {
                     var line = sr.ReadLine();
                     var values = line.Split(',');
 
-                    Variables.addTerritory(values[0], int.Parse(values[1]));
+                    Variables.addTerritory(values[1], int.Parse(values[2]));
+
+                }
+            }
+
+            using (StreamReader sr = new StreamReader(@"..\..\Lords.csv"))
+            {
+                var header = sr.ReadLine();
+                while (sr.Peek() >= 0)
+                {
+                    var line = sr.ReadLine();
+                    var values = line.Split(',');
+
+                    Variables.addLord(values[1], int.Parse(values[2]), 0, 0, 0, 0, 0);
 
                 }
             }
