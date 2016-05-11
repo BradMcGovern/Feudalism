@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***********************************
+/Program.cs
+/"Feudalism" game
+/
+/Main program driver for game
+/
+/Created by Brad McGovern
+/
+/Last updated May 11, 2016
+************************************/
+
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +32,8 @@ namespace Feudalism
             Application.SetCompatibleTextRenderingDefault(false);
 
             initializeGame();
+
+            Application.Run(new StartScreen());
 
             Application.Run(new Interface());
 

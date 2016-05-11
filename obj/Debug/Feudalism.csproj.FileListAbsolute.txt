@@ -7,3 +7,4 @@ C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.Interface.resources
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.Properties.Resources.resources
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.csproj.GenerateResource.Cache
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Debug\Feudalism.StartScreen.resources

@@ -1,0 +1,9 @@
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Feudalism.exe.config
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Feudalism.exe
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Feudalism.pdb
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.Interface.resources
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.Properties.Resources.resources
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.csproj.GenerateResource.Cache
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.exe
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.pdb
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Fonts\celtgael.ttf

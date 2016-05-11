@@ -25,6 +25,8 @@ namespace Feudalism
             lordList.Add(newLord);
         }
 
+        public static int playerNumber = 0;
+
 
     }
 
