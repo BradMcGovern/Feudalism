@@ -36,8 +36,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.grpKingdomInfo = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblTerName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPlayerTerritory = new System.Windows.Forms.Label();
@@ -48,6 +46,19 @@
             this.btnTerr8 = new System.Windows.Forms.Button();
             this.btnTerr0 = new System.Windows.Forms.Button();
             this.btnTerr2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblLavish = new System.Windows.Forms.Label();
+            this.lblAdventurous = new System.Windows.Forms.Label();
+            this.lblGregarious = new System.Windows.Forms.Label();
+            this.lblPious = new System.Windows.Forms.Label();
+            this.lblHonorable = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblAffinity = new System.Windows.Forms.Label();
+            this.btnMatricies = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpKingdomInfo.SuspendLayout();
             this.SuspendLayout();
@@ -66,10 +77,10 @@
             // 
             this.lblLordName.BackColor = System.Drawing.Color.White;
             this.lblLordName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblLordName.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLordName.Location = new System.Drawing.Point(67, 87);
+            this.lblLordName.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLordName.Location = new System.Drawing.Point(65, 56);
             this.lblLordName.Name = "lblLordName";
-            this.lblLordName.Size = new System.Drawing.Size(181, 22);
+            this.lblLordName.Size = new System.Drawing.Size(246, 22);
             this.lblLordName.TabIndex = 1;
             // 
             // btnTerr3
@@ -110,14 +121,24 @@
             // 
             // grpKingdomInfo
             // 
-            this.grpKingdomInfo.Controls.Add(this.label3);
+            this.grpKingdomInfo.Controls.Add(this.lblAffinity);
+            this.grpKingdomInfo.Controls.Add(this.label8);
+            this.grpKingdomInfo.Controls.Add(this.lblHonorable);
+            this.grpKingdomInfo.Controls.Add(this.lblPious);
+            this.grpKingdomInfo.Controls.Add(this.lblGregarious);
+            this.grpKingdomInfo.Controls.Add(this.lblAdventurous);
+            this.grpKingdomInfo.Controls.Add(this.lblLavish);
+            this.grpKingdomInfo.Controls.Add(this.label7);
+            this.grpKingdomInfo.Controls.Add(this.label6);
+            this.grpKingdomInfo.Controls.Add(this.label5);
             this.grpKingdomInfo.Controls.Add(this.label2);
             this.grpKingdomInfo.Controls.Add(this.label1);
+            this.grpKingdomInfo.Controls.Add(this.label3);
             this.grpKingdomInfo.Controls.Add(this.lblTerName);
             this.grpKingdomInfo.Controls.Add(this.lblLordName);
             this.grpKingdomInfo.Location = new System.Drawing.Point(486, 46);
             this.grpKingdomInfo.Name = "grpKingdomInfo";
-            this.grpKingdomInfo.Size = new System.Drawing.Size(278, 414);
+            this.grpKingdomInfo.Size = new System.Drawing.Size(344, 414);
             this.grpKingdomInfo.TabIndex = 5;
             this.grpKingdomInfo.TabStop = false;
             this.grpKingdomInfo.Visible = false;
@@ -125,58 +146,38 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(15, 88);
+            this.label3.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(15, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 17);
+            this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Lord";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Kingdom Information";
             // 
             // lblTerName
             // 
             this.lblTerName.BackColor = System.Drawing.Color.White;
             this.lblTerName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTerName.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTerName.Location = new System.Drawing.Point(67, 52);
+            this.lblTerName.Font = new System.Drawing.Font("Book Antiqua", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTerName.Location = new System.Drawing.Point(19, 19);
             this.lblTerName.Name = "lblTerName";
-            this.lblTerName.Size = new System.Drawing.Size(181, 22);
+            this.lblTerName.Size = new System.Drawing.Size(246, 22);
             this.lblTerName.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Celtic Gaelige", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label4.Location = new System.Drawing.Point(481, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 26);
+            this.label4.Size = new System.Drawing.Size(140, 31);
             this.label4.TabIndex = 6;
             this.label4.Text = "Kingdom Of";
             // 
             // lblPlayerTerritory
             // 
-            this.lblPlayerTerritory.BackColor = System.Drawing.Color.White;
-            this.lblPlayerTerritory.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerTerritory.Location = new System.Drawing.Point(607, 19);
+            this.lblPlayerTerritory.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.lblPlayerTerritory.Font = new System.Drawing.Font("Celtic Gaelige", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lblPlayerTerritory.Location = new System.Drawing.Point(618, 17);
             this.lblPlayerTerritory.Name = "lblPlayerTerritory";
             this.lblPlayerTerritory.Size = new System.Drawing.Size(127, 22);
             this.lblPlayerTerritory.TabIndex = 7;
@@ -266,12 +267,143 @@
             this.btnTerr2.UseVisualStyleBackColor = true;
             this.btnTerr2.Click += new System.EventHandler(this.territoryButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 243);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Lavish";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Adventurous";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(15, 170);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(89, 20);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Gregarious";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(15, 134);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Pious";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(15, 100);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 20);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Honorable";
+            // 
+            // lblLavish
+            // 
+            this.lblLavish.BackColor = System.Drawing.Color.White;
+            this.lblLavish.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblLavish.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLavish.Location = new System.Drawing.Point(122, 242);
+            this.lblLavish.Name = "lblLavish";
+            this.lblLavish.Size = new System.Drawing.Size(117, 22);
+            this.lblLavish.TabIndex = 11;
+            // 
+            // lblAdventurous
+            // 
+            this.lblAdventurous.BackColor = System.Drawing.Color.White;
+            this.lblAdventurous.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAdventurous.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdventurous.Location = new System.Drawing.Point(122, 203);
+            this.lblAdventurous.Name = "lblAdventurous";
+            this.lblAdventurous.Size = new System.Drawing.Size(117, 22);
+            this.lblAdventurous.TabIndex = 12;
+            // 
+            // lblGregarious
+            // 
+            this.lblGregarious.BackColor = System.Drawing.Color.White;
+            this.lblGregarious.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblGregarious.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGregarious.Location = new System.Drawing.Point(122, 168);
+            this.lblGregarious.Name = "lblGregarious";
+            this.lblGregarious.Size = new System.Drawing.Size(117, 22);
+            this.lblGregarious.TabIndex = 13;
+            // 
+            // lblPious
+            // 
+            this.lblPious.BackColor = System.Drawing.Color.White;
+            this.lblPious.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblPious.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPious.Location = new System.Drawing.Point(122, 132);
+            this.lblPious.Name = "lblPious";
+            this.lblPious.Size = new System.Drawing.Size(117, 22);
+            this.lblPious.TabIndex = 14;
+            // 
+            // lblHonorable
+            // 
+            this.lblHonorable.BackColor = System.Drawing.Color.White;
+            this.lblHonorable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHonorable.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHonorable.Location = new System.Drawing.Point(122, 98);
+            this.lblHonorable.Name = "lblHonorable";
+            this.lblHonorable.Size = new System.Drawing.Size(117, 22);
+            this.lblHonorable.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(15, 289);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Affinity";
+            // 
+            // lblAffinity
+            // 
+            this.lblAffinity.BackColor = System.Drawing.Color.White;
+            this.lblAffinity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAffinity.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAffinity.Location = new System.Drawing.Point(122, 287);
+            this.lblAffinity.Name = "lblAffinity";
+            this.lblAffinity.Size = new System.Drawing.Size(117, 22);
+            this.lblAffinity.TabIndex = 17;
+            // 
+            // btnMatricies
+            // 
+            this.btnMatricies.Location = new System.Drawing.Point(24, 480);
+            this.btnMatricies.Name = "btnMatricies";
+            this.btnMatricies.Size = new System.Drawing.Size(101, 50);
+            this.btnMatricies.TabIndex = 15;
+            this.btnMatricies.Text = "Show Relationship Matricies";
+            this.btnMatricies.UseVisualStyleBackColor = true;
+            this.btnMatricies.Click += new System.EventHandler(this.btnMatricies_Click);
+            // 
             // Interface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClientSize = new System.Drawing.Size(780, 542);
+            this.ClientSize = new System.Drawing.Size(855, 542);
+            this.Controls.Add(this.btnMatricies);
             this.Controls.Add(this.btnTerr2);
             this.Controls.Add(this.btnTerr0);
             this.Controls.Add(this.btnTerr8);
@@ -306,8 +438,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.GroupBox grpKingdomInfo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTerName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblPlayerTerritory;
@@ -318,6 +448,19 @@
         private System.Windows.Forms.Button btnTerr8;
         private System.Windows.Forms.Button btnTerr0;
         private System.Windows.Forms.Button btnTerr2;
+        private System.Windows.Forms.Label lblHonorable;
+        private System.Windows.Forms.Label lblPious;
+        private System.Windows.Forms.Label lblGregarious;
+        private System.Windows.Forms.Label lblAdventurous;
+        private System.Windows.Forms.Label lblLavish;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAffinity;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnMatricies;
     }
 }
 

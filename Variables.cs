@@ -26,6 +26,7 @@ namespace Feudalism
         }
 
         public static int playerNumber = 0;
+        public static int numberOfLords = 0;
 
 
     }

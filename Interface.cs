@@ -24,6 +24,8 @@ namespace Feudalism
     public partial class Interface : Form
     {
 
+        string[] statDescriptors = { "Very Low", "Low", "Average", "High", "Very High" };
+
         public Interface()
         {
 
@@ -56,6 +58,14 @@ namespace Feudalism
 
             lblLordName.Text = Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getName();
             lblTerName.Text = Variables.getTerritory(territoryNumber).getName();
+            lblHonorable.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getHonorable()) + 2];
+            lblPious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getPious()) + 2];
+            lblGregarious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getGregarious()) + 2];
+            lblAdventurous.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getAdventurous()) + 2];
+            lblLavish.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getLavish()) + 2];
+
+            lblAffinity.Text = Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getAffinity(Variables.playerNumber).ToString();
+             
         }
 
         private void Interface_Load(object sender, EventArgs e)
@@ -74,5 +84,10 @@ namespace Feudalism
             
         }
 
+        private void btnMatricies_Click(object sender, EventArgs e)
+        {
+            var newForm = new Matricies();
+            newForm.Show();
+        }
     }
 }

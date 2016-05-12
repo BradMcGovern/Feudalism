@@ -53,6 +53,12 @@
       <DependentUpon>Interface.cs</DependentUpon>
     </Compile>
     <Compile Include="Lord.cs" />
+    <Compile Include="Matricies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Matricies.Designer.cs">
+      <DependentUpon>Matricies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartScreen.cs">
@@ -66,6 +72,9 @@
     <EmbeddedResource Include="Interface.resx">
       <DependentUpon>Interface.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Matricies.resx">
+      <DependentUpon>Matricies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -78,6 +87,12 @@
     <EmbeddedResource Include="StartScreen.resx">
       <DependentUpon>StartScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Fonts\celtgael.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\Celtic.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

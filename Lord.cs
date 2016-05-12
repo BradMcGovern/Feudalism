@@ -30,6 +30,10 @@ namespace Feudalism
         public int getAdventurous() { return adventurous; }
         public int getLavish() { return lavish; }
 
+        public void addAffinity(int affinity) { affinities.Add(affinity); }
+        public int getAffinity(int otherLord) { return affinities[otherLord]; }
+        
+
         private string name;
         private int territory;
         private int honorable;
@@ -37,6 +41,7 @@ namespace Feudalism
         private int gregarious;
         private int adventurous;
         private int lavish;
+        private List<int> affinities = new List<int>();
 
 
 
