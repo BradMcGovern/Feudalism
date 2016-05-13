@@ -31,7 +31,7 @@ namespace Feudalism
             DialogResult result = MessageBox.Show(messageString, "Kingdom Choice", MessageBoxButtons.YesNo);
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                Variables.playerNumber = selectedKingdom;
+                Variables.PLAYER_NUMBER = selectedKingdom;
                 this.Close();
             }
 

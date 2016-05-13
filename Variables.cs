@@ -25,9 +25,11 @@ namespace Feudalism
             lordList.Add(newLord);
         }
 
-        public static int playerNumber = 0;
-        public static int numberOfLords = 0;
-
+        public static int PLAYER_NUMBER = 0;
+        public static int NUMBER_OF_LORDS = 0;
+        public static readonly int HIGH_THRESHOLD = 90;
+        public static readonly int MEDIUM_THRESHOLD = 65;
+        public static readonly int LOW_THRESHOLD = 25;
 
     }
 

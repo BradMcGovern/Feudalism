@@ -32,7 +32,18 @@ namespace Feudalism
 
         public void addAffinity(int affinity) { affinities.Add(affinity); }
         public int getAffinity(int otherLord) { return affinities[otherLord]; }
-        
+
+        public void addOpinion(int opinion) { opinions.Add(opinion); }
+        public void changeOpinion(int opinion, int otherLord) { opinions[otherLord] = opinion; }
+        public int getOpinion(int otherLord) { return opinions[otherLord]; }
+
+        public void addRelationship(int relationship) { relationships.Add(relationship); }
+        public void changeRelationship(int relationship, int otherLord) { relationships[otherLord] = relationship; }
+        public int getRelationship(int otherLord) { return relationships[otherLord]; }
+
+        public void addStance(int stance) { stances.Add(stance); }
+        public void changeStance(int stance, int otherLord) { stances[otherLord] = stance; }
+        public int getStance(int otherLord) { return stances[otherLord]; }
 
         private string name;
         private int territory;
@@ -42,6 +53,9 @@ namespace Feudalism
         private int adventurous;
         private int lavish;
         private List<int> affinities = new List<int>();
+        private List<int> opinions = new List<int>();
+        private List<int> relationships = new List<int>();
+        private List<int> stances = new List<int>();
 
 
 

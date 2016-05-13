@@ -45,7 +45,7 @@ namespace Feudalism
         {
             int[] statArray = { -2, -1, 0, 1, 2 };
             int holdNumber;
-            Random rnd = new Random();
+            Random randomNumber = new Random();
 
             //read territories from file and create territory list
             using (StreamReader sr = new StreamReader(@"..\..\Territories.csv"))
@@ -73,43 +73,105 @@ namespace Feudalism
                     //shuffle stat array to produce random stats for lord
                     for (int index = 0; index < 5; index++)
                     {
-                        int shuffle = rnd.Next(5);
+                        int shuffle = randomNumber.Next(5);
                         holdNumber = statArray[shuffle];
                         statArray[shuffle] = statArray[index];
                         statArray[index] = holdNumber;
                     }
 
                     Variables.addLord(values[1], int.Parse(values[2]), statArray[0], statArray[1], statArray[2], statArray[3], statArray[4]);
-                    Variables.numberOfLords += 1;
+                    Variables.NUMBER_OF_LORDS += 1;
                 }
             } //end create lord list
 
             
-            //set affinities between lords
+            //set inital relations between lords
             int affinity = 0;
+            int opinion;
+            int relationship;
+            int stance;
 
-            for (int index1 = 0; index1 < Variables.numberOfLords; index1++)
+            //loop through all lords to set affinity and opinion
+            for (int lord1 = 0; lord1 < Variables.NUMBER_OF_LORDS; lord1++)
             {
-                for (int index2 = 0; index2 < Variables.numberOfLords; index2++)
+                //for each lord, loop through all the lords to set relations
+                for (int lord2 = 0; lord2 < Variables.NUMBER_OF_LORDS; lord2++)
                 {
-                    if (index1 == index2) 
+                    if (lord1 == lord2)
                     {
-                        affinity = 10;
-                    } else if (index1 < index2) {
+                        affinity = 9;
+                        opinion = 999;
+                    }
+                    else if (lord1 < lord2)
+                    {  //lord2 hasn't had relations calculated yet
+                        //set affinity
                         affinity = 0;
-                        affinity += calculateAffinity(Variables.getLord(index1).getHonorable(), Variables.getLord(index2).getHonorable());
-                        affinity += calculateAffinity(Variables.getLord(index1).getPious(), Variables.getLord(index2).getPious());
-                        affinity += calculateAffinity(Variables.getLord(index1).getGregarious(), Variables.getLord(index2).getGregarious());
-                        affinity += calculateAffinity(Variables.getLord(index1).getAdventurous(), Variables.getLord(index2).getAdventurous());
-                        affinity += calculateAffinity(Variables.getLord(index1).getLavish(), Variables.getLord(index2).getLavish());                    
-                    } else {
-                        affinity = Variables.getLord(index2).getAffinity(index1);
+                        affinity += calculateAffinity(Variables.getLord(lord1).getHonorable(), Variables.getLord(lord2).getHonorable());
+                        affinity += calculateAffinity(Variables.getLord(lord1).getPious(), Variables.getLord(lord2).getPious());
+                        affinity += calculateAffinity(Variables.getLord(lord1).getGregarious(), Variables.getLord(lord2).getGregarious());
+                        affinity += calculateAffinity(Variables.getLord(lord1).getAdventurous(), Variables.getLord(lord2).getAdventurous());
+                        affinity += calculateAffinity(Variables.getLord(lord1).getLavish(), Variables.getLord(lord2).getLavish());
+
+                        //set opinion
+                        opinion = (affinity * 10) + (randomNumber.Next(50) - 25);
+
+                    }
+                    else {  //lord2 has already had relations calculated
+                        //affinity will be the same
+                        affinity = Variables.getLord(lord2).getAffinity(lord1);
+
+                        //need to calculate separate opinion
+                        opinion = (affinity * 10) + (randomNumber.Next(50) - 25);
                     }
 
-                    Variables.getLord(index1).addAffinity(affinity);
+                    Variables.getLord(lord1).addAffinity(affinity);
+                    Variables.getLord(lord1).addOpinion(opinion);
+                } //end inner loop
+            } //end outer loop
+
+            //now loop again to set relationship and stance
+            for (int lord1 = 0; lord1 < Variables.NUMBER_OF_LORDS; lord1++)
+            {
+                for (int lord2 = 0; lord2 < Variables.NUMBER_OF_LORDS; lord2++)
+                {
+                    if (lord1 == lord2) {
+                        relationship = 999;
+                        stance = 9;
+                    } else if (lord1 < lord2) {  
+                        //set relationship and make sure falls between 100 and -100
+                        relationship = ((Variables.getLord(lord1).getOpinion(lord2) + Variables.getLord(lord2).getOpinion(lord1)) / 2) + (randomNumber.Next(50) - 25);
+                        relationship = Math.Min(Math.Max(relationship, -100), 100);
+
+                        //set stance
+                        if (Math.Abs(relationship) > Variables.HIGH_THRESHOLD)
+                        {
+                            stance = 3;
+                        }
+                        else if (Math.Abs(relationship) > Variables.MEDIUM_THRESHOLD)
+                        {
+                            stance = 2;
+                        }
+                        else if (Math.Abs(relationship) > Variables.LOW_THRESHOLD)
+                        {
+                            stance = 1;
+                        }
+                        else {
+                            stance = 0;
+                        }
+                        if (relationship < 0)
+                            stance *= -1;
+                    } else {  
+                        //relationship and stance will be the same
+                        relationship = Variables.getLord(lord2).getRelationship(lord1);
+                        stance = Variables.getLord(lord2).getStance(lord1);
+                    }
+
+                    Variables.getLord(lord1).addRelationship(relationship);
+                    Variables.getLord(lord1).addStance(stance);
                 }
-    
-            } //end set affinity
+
+
+            } //end set relations
             
 
         } //end intializeGame()

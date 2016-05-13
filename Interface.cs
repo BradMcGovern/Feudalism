@@ -25,20 +25,21 @@ namespace Feudalism
     {
 
         string[] statDescriptors = { "Very Low", "Low", "Average", "High", "Very High" };
+        int selectedTerritory = 0;
 
         public Interface()
         {
 
             InitializeComponent();
      
-            lblPlayerTerritory.Text = Variables.getTerritory(Variables.playerNumber).getName();
+            lblPlayerTerritory.Text = Variables.getTerritory(Variables.PLAYER_NUMBER).getName();
 
             //set the text of each button to match its territory name
-            foreach (Control control in this.Controls)
+            foreach (Control control in grpMap.Controls)
             {
                 if (control is Button)
                 {                  
-                    string startText = (((Button)control).Text).Substring(0, 4); 
+                    string startText = (((Button)control).Name).Substring(3, 4); 
 
                     if (startText == "Terr")
                     {
@@ -46,26 +47,53 @@ namespace Feudalism
                         ((Button)control).Text = Variables.getTerritory(territoryNumber).getName();
                     }
                 }
-            } // end loop through buttons
+            } // end setting buttons
+
+            //add territories to combo box
+            for (int territory = 0; territory < Variables.NUMBER_OF_LORDS; territory++)
+            {
+                cmbTerritories.Items.Add(Variables.getTerritory(territory).getName());
+            }
+            cmbTerritories.SelectedIndex = 0;
+            lblAffinityOther.Text = "";
+            lblOpinionOfOther.Text = "";
+            lblOtherOpinion.Text = "";
+            lblRelationshipOther.Text = "";
+            lblStanceToOther.Text = "";
+            lblOtherStance.Text = "";
+
         } //end intitalization of Interface form
-        
+
+        //Begin methods for form
+
         //gets tag from clicked button and displays territory information in form
         private void territoryButton_Click(object sender, EventArgs e)
         {
-            int territoryNumber = Convert.ToInt32(((Button)sender).Tag);
 
-            grpKingdomInfo.Show();
+            selectedTerritory = Convert.ToInt32(((Button)sender).Tag);
 
-            lblLordName.Text = Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getName();
-            lblTerName.Text = Variables.getTerritory(territoryNumber).getName();
-            lblHonorable.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getHonorable()) + 2];
-            lblPious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getPious()) + 2];
-            lblGregarious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getGregarious()) + 2];
-            lblAdventurous.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getAdventurous()) + 2];
-            lblLavish.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getLavish()) + 2];
+            lblLordName.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getName();
+            lblTerName.Text = Variables.getTerritory(selectedTerritory).getName();
+            lblHonorable.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getHonorable()) + 2];
+            lblPious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getPious()) + 2];
+            lblGregarious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getGregarious()) + 2];
+            lblAdventurous.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAdventurous()) + 2];
+            lblLavish.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getLavish()) + 2];
 
-            lblAffinity.Text = Variables.getLord(Variables.getTerritory(territoryNumber).getLordNumber()).getAffinity(Variables.playerNumber).ToString();
-             
+            lblAffinityYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(Variables.PLAYER_NUMBER).ToString();
+            lblOpinionOfYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(Variables.PLAYER_NUMBER).ToString();
+            lblYourOpinion.Text = Variables.getLord(Variables.PLAYER_NUMBER).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+            lblRelationshipYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(Variables.PLAYER_NUMBER).ToString();
+            lblStanceToYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(Variables.PLAYER_NUMBER).ToString();
+            lblYourStance.Text = Variables.getLord(Variables.PLAYER_NUMBER).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+
+            lblAffinityOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(cmbTerritories.SelectedIndex).ToString();
+            lblOpinionOfOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(cmbTerritories.SelectedIndex).ToString();
+            lblOtherOpinion.Text = Variables.getLord(cmbTerritories.SelectedIndex).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+            lblRelationshipOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(cmbTerritories.SelectedIndex).ToString();
+            lblStanceToOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(cmbTerritories.SelectedIndex).ToString();
+            lblOtherStance.Text = Variables.getLord(cmbTerritories.SelectedIndex).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+
         }
 
         private void Interface_Load(object sender, EventArgs e)
@@ -84,10 +112,26 @@ namespace Feudalism
             
         }
 
+        //show matrices form
         private void btnMatricies_Click(object sender, EventArgs e)
         {
             var newForm = new Matricies();
             newForm.Show();
         }
-    }
-}
+
+        //change relationship info displayed when a new territory is selected
+        private void cmbTerritories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblAffinityOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(cmbTerritories.SelectedIndex).ToString();
+            lblOpinionOfOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(cmbTerritories.SelectedIndex).ToString();
+            lblOtherOpinion.Text = Variables.getLord(cmbTerritories.SelectedIndex).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+            lblRelationshipOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(cmbTerritories.SelectedIndex).ToString();
+            lblStanceToOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(cmbTerritories.SelectedIndex).ToString();
+            lblOtherStance.Text = Variables.getLord(cmbTerritories.SelectedIndex).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+
+            btnMatricies.Select();
+        }
+
+
+    } //end class
+} //end namespace

@@ -9,3 +9,4 @@ C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Fonts\celtgael.ttf
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.StartScreen.resources
 C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\bin\Release\Fonts\Celtic.ttf
+C:\Users\bmcgovern\Documents\Visual Studio 2015\Projects\Feudalism\Feudalism\obj\Release\Feudalism.Matricies.resources
