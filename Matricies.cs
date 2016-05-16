@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***********************************
+/Matrices.cs
+/"Feudalism" game
+/
+/Form that shows the different relation matrices
+/
+/Created by Brad McGovern
+/
+/Last updated May 16, 2016
+************************************/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +28,6 @@ namespace Feudalism
             InitializeComponent();
 
             //change text of lord labels
-            //foreach (Control control in this.Controls)
              foreach (Control control in tableLayoutPanel1.Controls)
             {
                 if (control is Label)
@@ -56,8 +66,13 @@ namespace Feudalism
 
         private void fillMatrix(string type)
         {
+            int cellTag;  //tag of cell in matrix that indicates column and row
+            int territory1; //territory for that row
+            int territory2; //territory for that column
+            Lord lord1; //lord of the territory for that row
+            int lord2; //lord number of the territory for that column
+            int stat; //stat showing the relation between the two lords
 
-            string[] stances = { "enemy", "rival", "cool", "neutral", "warm", "friend", "ally" }; 
             foreach (Control control in tableLayoutPanel1.Controls)
             {
                 if (control is Label)
@@ -66,133 +81,30 @@ namespace Feudalism
 
                     if (startText == "Stat")
                     {
-                        int cellTag = Convert.ToInt32(((Label)control).Tag);
-                        int stat = getStat(type, cellTag);
+                        cellTag = Convert.ToInt32(((Label)control).Tag);
+                        territory1 = cellTag / 100;
+                        territory2 = cellTag % 100;
+                        lord1 = Variables.getLord(Variables.getTerritory(territory1).getLordNumber());
+                        lord2 = Variables.getTerritory(territory2).getLordNumber();
+                        stat = lord1.getRelation(lord2, type);
+
                         if (type == "stance")
                         {
-                            ((Label)control).Text = stances[stat + 3];
+                            ((Label)control).Text = Variables.stances[stat + 3];
                         }
                         else
                         {
                             ((Label)control).Text = stat.ToString();
                         }
                         
-                        ((Label)control).BackColor = getColor(stat, type);
+                        ((Label)control).BackColor = Variables.getColor(stat, type);
                     }
                 }
             } //end foreach loop
 
             lblMatrixType.Text = type;
 
-        } //end btnAffinity_Click()
-
-        private int getStat(string type, int cellTag)
-        {
-            int territory1 = cellTag / 100;
-            int territory2 = cellTag % 100;
-            int lord1 = Variables.getTerritory(territory1).getLordNumber();
-            int lord2 = Variables.getTerritory(territory2).getLordNumber();
-            int stat;
-            switch (type)
-            {
-                case "affinity":
-                    stat = Variables.getLord(lord1).getAffinity(lord2);
-                    break;
-                case "opinion":
-                    stat = Variables.getLord(lord1).getOpinion(lord2);
-                    break;
-                case "stance":
-                    stat = Variables.getLord(lord1).getStance(lord2);
-                    break;
-                default:
-                    stat = Variables.getLord(lord1).getRelationship(lord2);
-                    break;
-
-            }
-
-            return stat;
-                        
-        } //end getStat()
-               
-
-        private Color getColor(int stat, string type)
-        {
-            int threshold;
-
-            //set threshold
-            if (type == "affinity")
-            {
-                switch (stat)
-                {
-                    case -6:
-                    case -5:
-                        threshold = -3;
-                        break;
-                    case -4:
-                    case -3:
-                    case -2:
-                        threshold = -2;
-                        break;
-                    case 2:
-                    case 3:
-                    case 4:
-                        threshold = 2;
-                        break;
-                    case 5:
-                    case 6:
-                        threshold = 3;
-                        break;
-                    default:
-                        threshold = 0;
-                        break;
-                } //end switch
-            }
-            else if (type == "stance")
-            {
-                threshold = stat;
-            }
-            else {
-                if (Math.Abs(stat) > Variables.HIGH_THRESHOLD)
-                {
-                    threshold = 3;
-                }
-                else if (Math.Abs(stat) > Variables.MEDIUM_THRESHOLD)
-                {
-                    threshold = 2;
-                }
-                else if (Math.Abs(stat) > Variables.LOW_THRESHOLD)
-                {
-                    threshold = 1;
-                }
-                else {
-                    threshold = 0;
-                } //end if..else
-
-                if (stat < 0)
-                    threshold *= -1;
-            } //end set threshold
-
-            // return color
-            switch (threshold)
-            {
-                case -3:
-                    return Color.Red;
-                case -2:
-                    return Color.FromArgb(255, 128, 128);
-                case -1:
-                    return Color.FromArgb(255, 192, 192);
-                case 1:
-                    return Color.FromArgb(192, 255, 192);
-                case 2:
-                    return Color.FromArgb(128, 255, 128);
-                case 3:
-                    return Color.Green;
-                default:
-                    return Color.White;
-            }
-        } //end getColor()
-
-
+        } //end btnAffinity_Click()               
 
         private void btnExit_Click(object sender, EventArgs e)
         {

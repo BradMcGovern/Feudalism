@@ -527,18 +527,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Celtic Gaelige", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label4.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(23, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 31);
+            this.label4.Size = new System.Drawing.Size(174, 28);
             this.label4.TabIndex = 6;
             this.label4.Text = "You are king of";
             // 
             // lblPlayerTerritory
             // 
             this.lblPlayerTerritory.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.lblPlayerTerritory.Font = new System.Drawing.Font("Celtic Gaelige", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.lblPlayerTerritory.Location = new System.Drawing.Point(220, 12);
+            this.lblPlayerTerritory.Font = new System.Drawing.Font("Book Antiqua", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerTerritory.Location = new System.Drawing.Point(191, 12);
             this.lblPlayerTerritory.Name = "lblPlayerTerritory";
             this.lblPlayerTerritory.Size = new System.Drawing.Size(127, 34);
             this.lblPlayerTerritory.TabIndex = 7;

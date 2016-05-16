@@ -6,7 +6,7 @@
 /
 /Created by Brad McGovern
 /
-/Last updated May 11, 2016
+/Last updated May 16, 2016
 ************************************/
 
 using System;
@@ -84,8 +84,10 @@ namespace Feudalism
                 }
             } //end create lord list
 
-            
+
             //set inital relations between lords
+
+            //variables for the different types of relations
             int affinity = 0;
             int opinion;
             int relationship;
@@ -176,6 +178,7 @@ namespace Feudalism
 
         } //end intializeGame()
 
+        //function to calculate the affinity betweeen two lords
         static int calculateAffinity(int firstLordStat, int secondLordStat)
         {
             int affinity = firstLordStat * secondLordStat;

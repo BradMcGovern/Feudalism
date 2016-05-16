@@ -1,4 +1,16 @@
-﻿using System;
+﻿/***********************************
+/Territory.cs
+/"Feudalism" game
+/
+/Defines the Territory class
+/
+/Created by Brad McGovern
+/
+/Last updated May 16, 2016
+************************************/
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

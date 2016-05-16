@@ -1445,10 +1445,10 @@
             // lblMatrixType
             // 
             this.lblMatrixType.AutoSize = true;
-            this.lblMatrixType.Font = new System.Drawing.Font("Celtic Gaelige", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.lblMatrixType.Font = new System.Drawing.Font("Book Antiqua", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatrixType.Location = new System.Drawing.Point(37, 13);
             this.lblMatrixType.Name = "lblMatrixType";
-            this.lblMatrixType.Size = new System.Drawing.Size(135, 36);
+            this.lblMatrixType.Size = new System.Drawing.Size(119, 32);
             this.lblMatrixType.TabIndex = 37;
             this.lblMatrixType.Text = "Matrices";
             // 

@@ -1,4 +1,15 @@
-﻿using System;
+﻿/***********************************
+/Lord.cs
+/"Feudalism" game
+/
+/Defines the Lord class
+/
+/Created by Brad McGovern
+/
+/Last updated May 16, 2016
+************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +55,21 @@ namespace Feudalism
         public void addStance(int stance) { stances.Add(stance); }
         public void changeStance(int stance, int otherLord) { stances[otherLord] = stance; }
         public int getStance(int otherLord) { return stances[otherLord]; }
+
+        public int getRelation(int otherLord, string type)
+        {
+            switch (type)
+            {
+                case "affinity":
+                    return affinities[otherLord];
+                case "opinion":
+                    return opinions[otherLord];
+                case "stance":
+                    return stances[otherLord];
+                default:
+                    return relationships[otherLord];
+            }
+        }
 
         private string name;
         private int territory;

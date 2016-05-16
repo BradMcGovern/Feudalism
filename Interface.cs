@@ -6,7 +6,7 @@
 /
 /Created by Brad McGovern
 /
-/Last updated May 11, 2016
+/Last updated May 16, 2016
 ************************************/
 
 using System;
@@ -71,30 +71,40 @@ namespace Feudalism
         {
 
             selectedTerritory = Convert.ToInt32(((Button)sender).Tag);
+            Lord thisLord = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber());
 
-            lblLordName.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getName();
+            //fill info boxes
+            lblLordName.Text = thisLord.getName();
             lblTerName.Text = Variables.getTerritory(selectedTerritory).getName();
-            lblHonorable.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getHonorable()) + 2];
-            lblPious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getPious()) + 2];
-            lblGregarious.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getGregarious()) + 2];
-            lblAdventurous.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAdventurous()) + 2];
-            lblLavish.Text = statDescriptors[(Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getLavish()) + 2];
+            lblHonorable.Text = statDescriptors[thisLord.getHonorable() + 2];
+            lblPious.Text = statDescriptors[thisLord.getPious() + 2];
+            lblGregarious.Text = statDescriptors[thisLord.getGregarious() + 2];
+            lblAdventurous.Text = statDescriptors[thisLord.getAdventurous() + 2];
+            lblLavish.Text = statDescriptors[thisLord.getLavish() + 2];
 
-            lblAffinityYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(Variables.PLAYER_NUMBER).ToString();
-            lblOpinionOfYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(Variables.PLAYER_NUMBER).ToString();
-            lblYourOpinion.Text = Variables.getLord(Variables.PLAYER_NUMBER).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
-            lblRelationshipYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(Variables.PLAYER_NUMBER).ToString();
-            lblStanceToYou.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(Variables.PLAYER_NUMBER).ToString();
-            lblYourStance.Text = Variables.getLord(Variables.PLAYER_NUMBER).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+            //fill relations to player
+            fillRelationBoxes("player", Variables.PLAYER_NUMBER);
 
-            lblAffinityOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(cmbTerritories.SelectedIndex).ToString();
-            lblOpinionOfOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(cmbTerritories.SelectedIndex).ToString();
-            lblOtherOpinion.Text = Variables.getLord(cmbTerritories.SelectedIndex).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
-            lblRelationshipOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(cmbTerritories.SelectedIndex).ToString();
-            lblStanceToOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(cmbTerritories.SelectedIndex).ToString();
-            lblOtherStance.Text = Variables.getLord(cmbTerritories.SelectedIndex).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
+            //fill relations to selected territoy/lord
+            fillRelationBoxes("other", cmbTerritories.SelectedIndex);
 
-        }
+            //change territory button backcolors to match relationship with this territory
+            foreach (Control control in grpMap.Controls)
+            {
+                if (control is Button)
+                {
+                    string startText = (((Button)control).Name).Substring(3, 4);
+
+                    if (startText == "Terr")
+                    {
+                        int territoryNumber = Convert.ToInt32(((Button)control).Tag);
+                        ((Button)control).BackColor = Variables.getColor(thisLord.getRelationship(Variables.getTerritory(territoryNumber).getLordNumber()), "relationship");
+                    }
+                }
+            } // end change button colors
+
+
+        } //end territoryBUtton_Click()
 
         private void Interface_Load(object sender, EventArgs e)
         {
@@ -119,19 +129,84 @@ namespace Feudalism
             newForm.Show();
         }
 
-        //change relationship info displayed when a new territory is selected
+        //change relationship info displayed when a new territory is selected from drop-down list
         private void cmbTerritories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblAffinityOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getAffinity(cmbTerritories.SelectedIndex).ToString();
-            lblOpinionOfOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getOpinion(cmbTerritories.SelectedIndex).ToString();
-            lblOtherOpinion.Text = Variables.getLord(cmbTerritories.SelectedIndex).getOpinion(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
-            lblRelationshipOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getRelationship(cmbTerritories.SelectedIndex).ToString();
-            lblStanceToOther.Text = Variables.getLord(Variables.getTerritory(selectedTerritory).getLordNumber()).getStance(cmbTerritories.SelectedIndex).ToString();
-            lblOtherStance.Text = Variables.getLord(cmbTerritories.SelectedIndex).getStance(Variables.getTerritory(selectedTerritory).getLordNumber()).ToString();
-
+            fillRelationBoxes("other", cmbTerritories.SelectedIndex);
             btnMatricies.Select();
         }
 
+        //function to fill in the boxes showing the relations stats
+        private void fillRelationBoxes(string withWhom, int otherLordNumber)
+        {
+            int thisLordNumber = Variables.getTerritory(selectedTerritory).getLordNumber(); //lord number of the lord of the displayed territory
+            Lord thisLord = Variables.getLord(thisLordNumber); //the lord of the displayed territory
+            Lord otherLord = Variables.getLord(otherLordNumber); //the lord to compare the displayed lord with, based on the lord number passed to the function
+
+            //the various stats to fill the boxes with
+            int affinity;
+            int theirOpinion;
+            int opinionOfThem;
+            int relationship;
+            int theirStance;
+            int stanceToThem;
+
+            //holding variables for the boxes to be filled
+            Label affinityBox;
+            Label theirOpinionBox;
+            Label opinionOfThemBox;
+            Label relationshipBox;
+            Label theirStanceBox;
+            Label stanceToThemBox;
+
+            //set stats
+            affinity = thisLord.getRelation(otherLordNumber, "affinity");
+            theirOpinion = thisLord.getRelation(otherLordNumber, "opinion");
+            opinionOfThem = otherLord.getRelation(thisLordNumber, "opinion");
+            relationship = thisLord.getRelation(otherLordNumber, "relationship");
+            theirStance = thisLord.getRelation(otherLordNumber, "stance");
+            stanceToThem = otherLord.getRelation(thisLordNumber, "stance");
+
+            //set which boxes are filled, based on value passed to function
+            switch (withWhom)
+            {
+                case "other":
+
+                    affinityBox = lblAffinityOther;
+                    theirOpinionBox = lblOpinionOfOther;
+                    opinionOfThemBox = lblOtherOpinion;
+                    relationshipBox = lblRelationshipOther;
+                    theirStanceBox = lblStanceToOther;
+                    stanceToThemBox = lblOtherStance;
+                    break;
+
+                default:
+                    affinityBox = lblAffinityYou;
+                    theirOpinionBox = lblOpinionOfYou;
+                    opinionOfThemBox = lblYourOpinion;
+                    relationshipBox = lblRelationshipYou;
+                    theirStanceBox = lblStanceToYou;
+                    stanceToThemBox = lblYourStance;
+                    break;
+            }
+
+            //fill boxes with stats
+            affinityBox.Text = affinity.ToString();
+            theirOpinionBox.Text = theirOpinion.ToString();
+            opinionOfThemBox.Text = opinionOfThem.ToString();
+            relationshipBox.Text = relationship.ToString();
+            theirStanceBox.Text = theirStance.ToString();
+            stanceToThemBox.Text = stanceToThem.ToString();
+
+            //change backcolor of boxes based on stat
+            affinityBox.BackColor = Variables.getColor(affinity, "affinity");
+            theirOpinionBox.BackColor = Variables.getColor(theirOpinion, "opinion");
+            opinionOfThemBox.BackColor = Variables.getColor(opinionOfThem, "opinion");
+            relationshipBox.BackColor = Variables.getColor(relationship, "relationship");
+            theirStanceBox.BackColor = Variables.getColor(theirStance, "stance");
+            stanceToThemBox.BackColor = Variables.getColor(stanceToThem, "stance");
+
+        } //end fillRelationBoxes()
 
     } //end class
 } //end namespace
